@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 
 /**
+ * @author Nagaraju V
  * Configures and provides com.cgs.examz.bl.bo.access to Hibernate sessions,
  * tied to the current thread of execution. Follows the Thread Local Session
  * pattern, see {@link http://hibernate.org/42.html }.
