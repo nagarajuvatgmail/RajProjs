@@ -9,7 +9,7 @@ import org.hibernate.Session;
 public class FirstExample {
 	public static void main(String[] args) {
 
-		System.out.println("In Main--->");
+		System.out.println("In Main Method--->");
 		Session session = HibernateUtil.getSession();
 		Contact contact = new Contact();
 		contact.setId(3);
