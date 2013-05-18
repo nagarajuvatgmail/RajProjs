@@ -1,5 +1,10 @@
 package com.raj.test;
 
+/**
+ * 
+ * @author Nagaraju V
+ *
+ */
 public class Contact {
 	private String firstName;
 	private String lastName;
