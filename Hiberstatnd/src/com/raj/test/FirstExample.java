@@ -15,7 +15,7 @@ public class FirstExample {
 		contact.setId(3);
 		contact.setFirstName("Naga");
 		contact.setLastName("vee");
-		contact.setEmail("raj_veer@gmail.com");
+		contact.setEmail("raju_veeranala@gmail.com");
 		session.save(contact);
 		session.beginTransaction().commit();
 
