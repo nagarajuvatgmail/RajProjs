@@ -3,19 +3,18 @@ apply plugin: 'eclipse'
 apply plugin: 'maven'
 apply plugin: 'application'
 
-ext.repositoryURL = 'http://cloud-repo.prosrm.com:8081/artifactory'
+ext.repositoryURL = ''
 ext.env = System.getenv()
 ext.buildNumber = env.BUILD_NUMBER?env.BUILD_NUMBER:0.1
 
-sourceCompatibility = 1.6
+sourceCompatibility = 1.7
 
-archivesBaseName = 'nebula-ppss'
+archivesBaseName = ''
 version = '0.1-SNAPSHOT'
 group = 'com.pros'
 
 repositories {
 	mavenRepo(name: 'remoteRepo', url: repositoryURL + '/repo')
-	//	mavenCentral()
 }
 
 configurations.all { resolutionStrategy.cacheChangingModulesFor 1, 'minutes' }
@@ -26,6 +25,7 @@ dependencies {
 	compile 'com.yammer.dropwizard:dropwizard-client:0.6.1'
 	//For JSON
 	compile 'org.codehaus.jettison:jettison:1.1'
+	
 	testCompile 'junit:junit:4.+'
 	testCompile 'org.mockito:mockito-core:1.9.5+'
 }
@@ -39,17 +39,17 @@ jar {
    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
 }
 
-task nebulappssplugin(dependsOn: build) << {
+task npplugin(dependsOn: build) << {
 	ant {
-		mkdir dir: 'nebula-ppss'
-		copy(todir: "nebula-ppss") {
+		mkdir dir: 'np'
+		copy(todir: "np") {
 			fileset(dir: ".", includes: 'bin/**')
 			fileset(dir: ".", includes: 'config/**')
 			fileset(dir: "build", includes: 'libs/**')
 		}
-		zip(destfile: 'nebula-ppss.zip') {
-			fileset(dir: 'nebula-ppss')
+		zip(destfile: 'np.zip') {
+			fileset(dir: 'np')
 		}
-		delete dir: 'nebula-ppss'
+		delete dir: 'np'
 	}
 }
